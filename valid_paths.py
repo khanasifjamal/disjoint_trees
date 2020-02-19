@@ -23,11 +23,20 @@ def main():
 	sets = [(to_set(tup[0]),to_set(tup[1])) for tup in sets_tup]
 
 	n = len(sets)
-	mat = np.empty((n,n))
+	mat = np.empty((n,n),dtype=np.int_)
 
 	for i in range(n):
 		for j in range(n):
-			mat[i][j] = comp
+			mat[i][j] = comp(sets[i],sets[j])
 
+	np.savetxt('mat.csv', mat, delimiter=',')
+	print("matrix written to :mat.csv")
+	print(mat)
+	det = np.linalg.det(mat)
+	rank = np.linalg.matrix_rank(mat)
+
+	print("\nSize of the matrix        : %sx%s\n"
+		"Rank of the matrix       : %s\n"
+		"Determinant of the matrix : %s\n"%(n,n,rank,det))
 if __name__ == "__main__":
 	main()
