@@ -66,7 +66,7 @@ def main():
 
 	print("\nSize of the matrix        : %sx%s\n"
 		"Rank of the matrix       : %s\n"
-		"Determinant of the matrix : %s\n"%(n,n,rank,det))
+		"Determinant of the matrix : %d\n"%(n,n,rank,det))
 
 	# lst = gen_sets(5,4)
 	# print(*lst,sep="\n")
