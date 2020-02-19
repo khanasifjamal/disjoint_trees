@@ -6,6 +6,15 @@ def to_set(str):
 	s = {int(i) for i in str}
 	return s
 
+def comp(tup1,tup2):
+	s1 = tup1[0]
+	s2 = tup1[1]
+	s3 = tup2[0]
+	s4 = tup2[1]
+	if (len(s1 & s3) >0 and len(s2 & s4)>0) or ( len(s1 & s4)>0 and len(s2 & s3)>0 ):
+		return 1
+	return 0
+
 def main():
 	file_name = sys.argv[1]
 	file = open(file_name,"r")
@@ -13,7 +22,12 @@ def main():
 	sets_tup = [tuple(i.split()) for i in set_strings] #Has tuples ('12','34')
 	sets = [(to_set(tup[0]),to_set(tup[1])) for tup in sets_tup]
 
-	print(sets)
+	n = len(sets)
+	mat = np.empty((n,n))
+
+	for i in range(n):
+		for j in range(n):
+			mat[i][j] = comp
 
 if __name__ == "__main__":
 	main()
